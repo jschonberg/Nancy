@@ -1,0 +1,47 @@
+.reminder-table{
+    width:100%;
+}
+
+tr.header{
+    font-size:1.3em;
+    font-weight: bold;
+    font-family:Georgia;
+    font-variant: small-caps;
+    color:#333;
+}
+tr.odd{
+    background:#f6f6f6;
+}
+
+.entry-row{
+
+}
+
+.navbar ul{
+    width:100%;
+    float:right;
+    padding:0px;
+    text-align: right;
+    margin-bottom:74px;
+    color:#999;
+    margin-top:0px;
+}
+.navbar li{
+    list-style: none;
+    display: inline;
+    width: auto;
+}
+
+.navbar li a{
+    color:#999;
+    text-decoration: none;
+}
+.navbar li a:hover{
+    text-decoration: underline;
+}
+
+.second-li{
+    margin-left:10px;
+    padding-left:10px;
+    border-left:1px solid #ccc;
+}

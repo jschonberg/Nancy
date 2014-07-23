@@ -1,0 +1,86 @@
+body {
+    font-family: Helvetica, Arial;
+    color:#666;
+    margin:0px;
+}
+
+.main-container{
+    width:902px;
+    padding:74px;
+    margin-left:auto;
+    margin-right:auto;
+    height:auto;
+}
+
+h1 {
+    margin-bottom:3px;
+    margin-top:0px;
+    font-family:Georgia;
+    font-variant: small-caps;
+    font-size:3em;
+    color:#333;
+}
+
+h2 {
+    font-size:1.5em;
+    font-family:Georgia;
+    color:#333;
+    margin-top:0px;
+    margin-bottom:14px;
+    font-variant: small-caps;
+}
+
+h5 {
+    font-size:0.9em;
+    margin:0px;
+    font-weight:normal;
+}
+
+.titleBox {
+    margin-bottom:74px;
+}
+
+.column {
+    width:365px;
+    float:left;
+    width:auto;
+}
+.column-left {
+    margin-right:74px;
+}
+.column-right {
+    margin-left:74px;
+}
+
+.form-group{
+    margin-bottom:14px;
+}
+.form-group label{
+    display:block;
+    font-size:1em;
+    margin-bottom:1px;
+}
+
+.text-input {
+    width:365px;
+    padding:5px;
+    font-size:0.9em;
+    color:#666;
+    border:1px solid #ccc;
+}
+
+.footer {
+    font-size:0.8em;
+    color:#ccc;
+    width:100%;
+    position: absolute;
+    bottom:10px;
+    text-align:center;
+}
+.footer a {
+    color:#ccc;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}

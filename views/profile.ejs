@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <title>Nancy – Stay in touch</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+</head>
+<body>
+<div class="main-container">
+<div class="navbar">
+    <ul>
+        <li><%= user.local.email %></li>
+        <li class="second-li"><a href="#add">Add reminder</a></li>
+        <li class="second-li"><a href="/logout">Sign out</a></li>
+    </ul>
+</div>
+
+<table class="reminder-table">
+    <tbody>
+        <tr class="header">
+            <td>Name</td>
+            <td>Next Reminder</td>
+            <td>Frequency</td>
+            <td>Action</td>
+        </tr>
+        <tr class="entry-row odd">
+            <td>Name</td>
+            <td>Next Reminder</td>
+            <td>Frequency</td>
+            <td>Action</td>
+        </tr>
+        <tr class="entry-row even">
+            <td>Name</td>
+            <td>Next Reminder</td>
+            <td>Frequency</td>
+            <td>Action</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Local</h3>
+
+                    <p>
+                        <strong>id</strong>: <%= user._id %><br>
+                        <strong>email</strong>: <%= user.local.email %><br>
+                        <strong>password</strong>: <%= user.local.password %>
+                    </p>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+</body>
+</html>

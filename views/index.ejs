@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Nancy – Stay in touch</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <div class="main-container">
+    <div class="titleBox">
+        <h1>Nancy<h1>
+        <h5>A simple tool to help you stay in touch with people.</h5>
+    </div>
+    <div class="column column-left">
+        <h2>Login</h2>
+        <!-- LOGIN FORM -->
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="text-input" name="email">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="text-input" name="password">
+            </div>
+            <button type="submit" class="btn ">Login</button>
+        </form>
+    </div>
+    <div class="column column-right">
+        <h2>Register</h2>
+        <!-- LOGIN FORM -->
+        <form action="/signup" method="post">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="text-input" name="name">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="text-input" name="email">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="text-input" name="password">
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" class="text-input" name="password-confirm">
+            </div>
+            <button type="submit" class="btn ">Register</button>
+        </form>        
+    </div>
+    </div>
+<div class="footer">
+    <p>Created by Jacob Schonberg @ <a href="http://www.hackerschool.com">Hacker School</a> in July 2014.
+</div>
+</body>
+
+
+
+</html>
