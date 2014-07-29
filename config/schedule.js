@@ -1,7 +1,7 @@
 module.exports = {
-    once : {
-        type : "oneTime",
-        frequency : undefined
+    daily : {
+        type : "recurring",
+        frequency : 1
     },
     weekly : {
         type : "recurring",
