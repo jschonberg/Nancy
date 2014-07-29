@@ -2,14 +2,26 @@
     width:100%;
 }
 
+.add-form{
+    background-color:#EEE;
+    display:block;
+    width:452px;
+    padding:20px;
+    margin-top:60px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
 tr.header{
-    font-size:1.3em;
+    font-size:1.1em;
     font-weight: bold;
     font-family:Georgia;
     font-variant: small-caps;
     color:#333;
 }
 tr.odd{
+}
+tr.even{
     background:#f6f6f6;
 }
 

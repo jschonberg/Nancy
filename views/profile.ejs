@@ -6,60 +6,66 @@
     <link rel="stylesheet" href="/stylesheets/profile.css">
 </head>
 <body>
-<div class="main-container">
-<div class="navbar">
-    <ul>
-        <li><%= user.local.email %></li>
-        <li class="second-li"><a href="#add">Add reminder</a></li>
-        <li class="second-li"><a href="/logout">Sign out</a></li>
-    </ul>
-</div>
-
-<table class="reminder-table">
-    <tbody>
-        <tr class="header">
-            <td>Name</td>
-            <td>Next Reminder</td>
-            <td>Frequency</td>
-            <td>Action</td>
-        </tr>
-        <tr class="entry-row odd">
-            <td>Name</td>
-            <td>Next Reminder</td>
-            <td>Frequency</td>
-            <td>Action</td>
-        </tr>
-        <tr class="entry-row even">
-            <td>Name</td>
-            <td>Next Reminder</td>
-            <td>Frequency</td>
-            <td>Action</td>
-        </tr>
-    </tbody>
-</table>
-
-
-
-
-
-
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
-
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
-                    </p>
-
-            </div>
-        </div>
-
+    <div class="main-container">
+    <div class="navbar">
+        <ul>
+            <li><%= user.local.email %></li>
+            <li class="second-li"><a href="#add">Add reminder</a></li>
+            <li class="second-li"><a href="/logout">Sign out</a></li>
+        </ul>
     </div>
 
-</div>
-</div>
+    <table class="reminder-table">
+        <tbody>
+            <tr class="header">
+                <td>Name</td>
+                <td>Next Reminder</td>
+                <td>Frequency</td>
+                <td>Action</td>
+            </tr>
+            <% notifications.forEach(function(notification){ %>
+                <tr class="entry-row odd">
+                    <td><%=notification.name %></td>
+                    <td><%=notification.nextSend %></td>
+                    <td><%=notification.frequency %></td>
+                    <td><a href="">Edit</a> | <a href="">Delete</a></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <!-- Add a notification form -->
+    <form action="/add" method="post" class="add-form">
+        <h2>Add a new reminder</h2>
+        <div class="form-group">
+            <label>Name of who to stay in touch with</label>
+            <input type="text" class="text-input" name="name">
+        </div>
+        <div class="form-group">
+            <label>Contact info for this person (ex: phone number of email address)</label>
+            <input type="text" class="text-input" name="contactInfo">
+        </div>
+        <div class="form-group">
+            <label>When do you want to be reminded to contact this person?</label>
+            <select name="schedule">
+                <option value="once">Remind me once</option>
+                <option value="weekly">Remind me every week</option>
+                <option value="biweekly">Remind me every other week</option>
+                <option value="monthly">Remind me every month</option>
+                <option value="trimonthly">Remind me every three months</option>
+                <option value="sixmonthly">Remind me every six months</option>
+                <option value="annually">Remind me every year</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Enter any pertinent notes about this person</label>
+            <textarea rows="10" class="text-input" name="notes"></textarea>
+        </div>
+        <button type="submit" class="btn">Add</button>
+    </form>
+    </div>
+
 </body>
+
+
 </html>

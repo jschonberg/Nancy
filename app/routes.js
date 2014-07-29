@@ -1,5 +1,10 @@
-module.exports = function(app, passport) {
+// load all the things we need
+var Notification = require('./models/notification');
+var User         = require('./models/user');
+var Schedule     = require('../config/schedule.js');
 
+// routes
+module.exports = function(app, passport) {
     // =====================================
     // HOME PAGE (with login links) ========
     // =====================================
@@ -47,8 +52,67 @@ module.exports = function(app, passport) {
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile.ejs', {
-            user : req.user // get the user out of session and pass to template
+        // find all notifications for this user to send along
+        User.findOne({'local.email' : req.user.local.email}, function(err, user){
+            if(err){
+                throw err;
+            }
+            if(!user){
+                console.log("user:" + user);
+            }
+            else{ // success
+                Notification.find({'userId' : user.id}, function(err, notification){
+                    if(!notification){
+                        return;
+                    }
+                    res.render('profile.ejs', {
+                        user : req.user, // get the user out of session and pass to template
+                        notifications : notification
+                    });
+                });
+            }
+            // 
+        });
+    });
+
+    //add a notification for the current user
+    app.post('/add', isLoggedIn, function(req, res){
+
+        // set notification details
+        User.findOne({'local.email' : req.user.local.email}, function(err, user){
+            if(err){
+                throw err;
+            }
+            if (!user){
+                console.log("Couldn't find user to add notification for");
+                req.flash('errorMessage', 'Couldn\'t find user to add notification for');
+                return;
+            }
+            else {
+                // user exists
+                var newNotification = new Notification();
+                newNotification.userId = user.id
+                newNotification.name = req.body.name;
+                newNotification.contactInfo = req.body.contactInfo;
+                newNotification.notes = req.body.notes;
+                newNotification.type = Schedule[req.body.schedule].type;
+                newNotification.frequency = Schedule[req.body.schedule].frequency;
+
+                // set next send day/time
+                if(newNotification.type === "recurring"){
+                    var next = new Date();
+                    newNotification.nextSend = next.setDate(next.getDate() 
+                                               + newNotification.frequency);
+                }else{
+                    newNotification.nextSend = null;
+                }
+
+                // save the notification
+                newNotification.save(function(err) {
+                    if (err) throw err;
+                    res.redirect('/profile');
+                });
+            }
         });
     });
 
